@@ -50,7 +50,8 @@ class ArrayTest {
     void insert() {
         String str1 = "Hello world!";
         String str2 = "Goodbye!";
-        Array<String> array = new Array<>(2);
+        String str3 = "foobar";
+        Array<String> array = new Array<>(4);
         array.append(str2);
 
         array.insert(0, str1);
@@ -60,6 +61,14 @@ class ArrayTest {
         assert array.getSize() == 2;
         assert result1.equals(str1);
         assert result2.equals(str2);
+
+        array.insert(3, str3);
+        String result3 = array.lookup(2);
+        String result4 = array.lookup(3);
+
+        assert array.getSize() == 4;
+        assert result3 == null;
+        assert result4.equals(str3);
     }
 
     @Test

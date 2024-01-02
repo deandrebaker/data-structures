@@ -48,13 +48,13 @@ public class Array<T> {
 
     public void insert(int index, T item) {
         if (isFull()) throw new RuntimeException("Could not insert. Array is full.");
-        if (index < 0 || index > size) throw new RuntimeException("Could not insert. Index out of range.");
+        if (index < 0 || index >= capacity) throw new RuntimeException("Could not insert. Index out of range.");
 
         for (int i = size; i > index; i--) {
             items[i] = items[i - 1];
         }
         items[index] = item;
-        size++;
+        size = index > size ? index + 1 : size + 1;
     }
 
     public void delete(int index) {

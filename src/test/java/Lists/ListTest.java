@@ -4,10 +4,10 @@ import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
 
-abstract class ListTest {
-    abstract List<String> getList();
+abstract public class ListTest {
+    abstract protected List<String> getList();
 
-    abstract List<String> getList(Iterable<String> initialItems);
+    abstract protected List<String> getList(Iterable<String> initialItems);
 
     @Test
     void lookup() {
@@ -54,6 +54,7 @@ abstract class ListTest {
     void insert() {
         String str1 = "Hello world!";
         String str2 = "Goodbye!";
+        String str3 = "foobar";
         List<String> list = getList();
         list.append(str2);
 
@@ -64,6 +65,14 @@ abstract class ListTest {
         assert list.getSize() == 2;
         assert result1.equals(str1);
         assert result2.equals(str2);
+
+        list.insert(3, str3);
+        String result3 = list.lookup(2);
+        String result4 = list.lookup(3);
+
+        assert list.getSize() == 4;
+        assert result3 == null;
+        assert result4.equals(str3);
     }
 
     @Test

@@ -78,11 +78,12 @@ public class Array<T> {
     public boolean isFull() {
         return size == capacity;
     }
-    
+
     public int getCapacity() {
         return capacity;
     }
 
+    @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {

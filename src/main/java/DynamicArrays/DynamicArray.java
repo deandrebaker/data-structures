@@ -68,7 +68,7 @@ public class DynamicArray<T> implements List<T> {
         int newCapacity = getCapacity() * 2;
         Array<T> newArray = new Array<>(newCapacity);
         for (int i = 0; i < getSize(); i++) {
-            newArray.append(array.lookup(i));
+            newArray.append(lookup(i));
         }
         array = newArray;
     }

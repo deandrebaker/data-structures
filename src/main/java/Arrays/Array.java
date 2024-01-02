@@ -41,13 +41,13 @@ public class Array<T> {
     }
 
     public void append(T item) {
-        if (isFull()) throw new RuntimeException("Could not append. Array is full.");
+        if (isFull()) throw new RuntimeException("Could not append. Full capacity.");
 
         items[size++] = item;
     }
 
     public void insert(int index, T item) {
-        if (isFull()) throw new RuntimeException("Could not insert. Array is full.");
+        if (isFull()) throw new RuntimeException("Could not insert. Full capacity.");
         if (index < 0 || index >= capacity) throw new RuntimeException("Could not insert. Index out of range.");
 
         for (int i = size; i > index; i--) {
@@ -58,7 +58,7 @@ public class Array<T> {
     }
 
     public void delete(int index) {
-        if (isEmpty()) throw new RuntimeException("Could not delete. Array is empty.");
+        if (isEmpty()) throw new RuntimeException("Could not delete. No items.");
         if (index < 0 || index >= size) throw new RuntimeException("Could not delete. Index out of range.");
 
         size--;

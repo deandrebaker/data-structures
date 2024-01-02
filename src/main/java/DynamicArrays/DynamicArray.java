@@ -84,7 +84,7 @@ public class DynamicArray<T> implements List<T> {
             if (i > 0) {
                 sb.append(", ");
             }
-            sb.append(array.lookup(i).toString());
+            sb.append(lookup(i).toString());
         }
         return String.format("size=%d, items=[%s]", getSize(), sb);
     }

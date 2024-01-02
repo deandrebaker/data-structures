@@ -5,6 +5,7 @@ import Lists.List;
 
 public class DynamicArray<T> implements List<T> {
     private Array<T> array;
+    private final int SCALE_FACTOR = 2;
 
     public DynamicArray() {
         int DEFAULT_CAPACITY = 10;
@@ -32,7 +33,7 @@ public class DynamicArray<T> implements List<T> {
     @Override
     public void append(T item) {
         if (isFull()) {
-            resize();
+            resize(SCALE_FACTOR * getCapacity());
         }
         array.append(item);
     }
@@ -40,7 +41,9 @@ public class DynamicArray<T> implements List<T> {
     @Override
     public void insert(int index, T item) {
         if (isFull()) {
-            resize();
+            resize(SCALE_FACTOR * getCapacity());
+        } else if (index > getCapacity()) {
+            resize(SCALE_FACTOR * index);
         }
         array.insert(index, item);
     }
@@ -64,9 +67,8 @@ public class DynamicArray<T> implements List<T> {
         return getSize() == getCapacity();
     }
 
-    private void resize() {
-        int newCapacity = getCapacity() * 2;
-        Array<T> newArray = new Array<>(newCapacity);
+    public void resize(int capacity) {
+        Array<T> newArray = new Array<>(capacity);
         for (int i = 0; i < getSize(); i++) {
             newArray.append(lookup(i));
         }

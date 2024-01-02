@@ -75,12 +75,6 @@ public class Array<T> {
         return size;
     }
 
-    public Array<T> copy() {
-        Array<T> array = new Array<>(capacity);
-        if (size >= 0) System.arraycopy(items, 0, array.items, 0, size);
-        return array;
-    }
-
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < size; i++) {

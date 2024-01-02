@@ -25,6 +25,8 @@ public class Array<T> {
     }
 
     public T lookup(int index) {
+        if (index < 0 || index >= size) throw new RuntimeException("Could not lookup. Index out of range.");
+
         //noinspection unchecked
         return (T) items[index];
     }
@@ -46,6 +48,7 @@ public class Array<T> {
 
     public void insert(int index, T item) {
         if (isFull()) throw new RuntimeException("Could not insert. Array is full.");
+        if (index < 0 || index >= size) throw new RuntimeException("Could not insert. Index out of range.");
 
         for (int i = size; i > index; i--) {
             items[i] = items[i - 1];
@@ -56,11 +59,16 @@ public class Array<T> {
 
     public void delete(int index) {
         if (isEmpty()) throw new RuntimeException("Could not delete. Array is empty.");
+        if (index < 0 || index >= size) throw new RuntimeException("Could not delete. Index out of range.");
 
         size--;
         for (int i = index; i < size; i++) {
             items[i] = items[i + 1];
         }
+    }
+
+    public int getSize() {
+        return size;
     }
 
     public boolean isEmpty() {
@@ -69,10 +77,6 @@ public class Array<T> {
 
     public boolean isFull() {
         return size == capacity;
-    }
-
-    public int getSize() {
-        return size;
     }
 
     public String toString() {

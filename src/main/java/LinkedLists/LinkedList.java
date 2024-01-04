@@ -34,10 +34,14 @@ public class LinkedList<T> implements List<T> {
     }
 
     public T getHead() {
+        if (isEmpty()) throw new RuntimeException("Could not lookup. No items.");
+
         return head.value;
     }
 
     public T getTail() {
+        if (isEmpty()) throw new RuntimeException("Could not lookup. No items.");
+
         return tail.value;
     }
 
@@ -100,6 +104,7 @@ public class LinkedList<T> implements List<T> {
     @Override
     public void insert(int index, T item) {
         if (index < 0) throw new RuntimeException("Could not insert. Index out of range.");
+
         else if (index > size) {
             for (int i = size; i < index; i++) {
                 append(null);
@@ -120,6 +125,8 @@ public class LinkedList<T> implements List<T> {
     }
 
     public void deleteHead() {
+        if (isEmpty()) throw new RuntimeException("Could not delete. No items.");
+
         head = head.next;
         size--;
         if (size == 0) {
@@ -128,6 +135,8 @@ public class LinkedList<T> implements List<T> {
     }
 
     public void deleteTail() {
+        if (isEmpty()) throw new RuntimeException("Could not delete. No items.");
+
         tail = tail.previous;
         size--;
         if (size == 0) {
@@ -143,6 +152,8 @@ public class LinkedList<T> implements List<T> {
         } else if (index == size - 1) {
             deleteTail();
         } else {
+            if (isEmpty()) throw new RuntimeException("Could not delete. No items.");
+
             Node<T> node = getNode(index);
             Node<T> previous = node.previous;
             Node<T> next = node.next;

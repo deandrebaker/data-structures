@@ -12,8 +12,8 @@ public class DynamicArray<T> implements List<T> {
         array = new Array<>(DEFAULT_CAPACITY);
     }
 
-    public DynamicArray(int capacity) {
-        array = new Array<>(capacity);
+    public DynamicArray(int initialCapacity) {
+        array = new Array<>(initialCapacity);
     }
 
     public DynamicArray(Iterable<T> initialItems) {

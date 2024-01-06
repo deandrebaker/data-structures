@@ -22,7 +22,7 @@ public class Queue<T> {
     }
 
     public T dequeue() {
-        T item = items.getHead();
+        T item = peak();
         items.deleteHead();
         return item;
     }
